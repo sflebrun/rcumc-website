@@ -1,0 +1,32 @@
+/*
+Theme Name:   RCUMC Exodus
+Description:  Child Theme for Exodus theme for Raleigh Court UMC
+Author:       Steven F. LeBrun
+Template:     exodus
+Version:      1.0
+*/
+
+@import url("../exodus/style.css");
+
+ul, ol {
+    margin-left: 0px;
+}
+
+.worship_content  {
+        margin-left: 30px
+}
+
+
+.rcumc_widget-entry { /* <article> */
+	margin-top: 30px;
+	position: relative;
+	overflow: hidden; /* keeps negative margin on meta from causing horizontal scroll on mobile */
+}
+
+.rcumc-widget-entry-title { /* <h1> */
+		margin: 0;
+		padding-top: 1px;
+		font-size: 1em;
+		font-weight: bold;
+		line-height: 1.6em;
+}
