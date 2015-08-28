@@ -53,7 +53,7 @@ $person_name = $person->first_name . ' ' . $person->last_name;
 <?php echo $help_text; ?><br/>
 <?php endif; ?>
 
-
+<?php get_template_part( 'content-footer-full' );  /* show edit report button */ ?>
 </article>
 <?php endwhile; ?>
 

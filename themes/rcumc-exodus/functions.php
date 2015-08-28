@@ -13,9 +13,10 @@
 // No direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+
 //Add Custom Post Types
 
-add_action( 'init', 'register_rcumc_post_types' );
+add_action( 'init', 'register_rcumc_post_types',1 );
 //Add Publications
 function register_rcumc_post_types() {
      $labels = array(
@@ -35,9 +36,9 @@ function register_rcumc_post_types() {
             'labels' => $labels,
             'public' => true,
             'has_archive' => true,
-            'taxonomies' => array('pubtype'), 
+            'taxonomies' => 'pubtype', 
             'rewrite'    => array('slug' => 'publications'), 
-            'supports' => array( 'title', 'editor', 'author','thumbnail', 'excerpt', 'comments' ),
+            'supports' => array( 'title', 'editor', 'author','thumbnail', 'excerpt'),
             'menu_position' => 5,
             'menu_icon' => 'dashicons-media-document',
             );
@@ -132,6 +133,17 @@ register_taxonomy(
  
 flush_rewrite_rules();
 }
+
+
+//This is to add Custom post types from event organiser and Church Theme Content to Visual editor.
+remove_action( 'init', 'eventorganiser_cpt_register', 10);
+add_action( 'init', 'eventorganiser_cpt_register', 1 );
+remove_action( 'init', 'ctc_register_post_type_sermon', 10);
+add_action( 'init', 'ctc_register_post_type_sermon', 1 );
+remove_action( 'init', 'ctc_register_post_type_person', 10);
+add_action( 'init', 'ctc_register_post_type_person', 1 );
+remove_action( 'init', 'ctc_register_post_type_location', 10);
+add_action( 'init', 'ctc_register_post_type_location', 1 );
 
 
 //Create Widget for Worship Events
@@ -320,6 +332,33 @@ function rcumc_event_tooltip_content( $description, $post_id){
 }
 
 
+/*Add RCUMC logo to login page.
+*Then add a link to the rcumc site.
+*/
+function my_login_logo() { ?>
+    <style type="text/css">
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png);
+            padding-bottom: 10px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'RCUMC';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+
+ 
 
 // Perform setup on after_setup_theme hook
 // Default priority is 10 so 11 ensures this to run after the parent theme's setup

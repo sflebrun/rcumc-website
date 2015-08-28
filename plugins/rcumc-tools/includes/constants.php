@@ -38,6 +38,7 @@ class RCUMC_Status_Report
 	const  TYPE_NAME           = 'rcumc_status_report';
 	const  METABOX_NAME        = 'rcumc_status_report_metabox';
 	const  SLUG                = 'status-report';
+	const  FULL_FLAG           = 'rcumc-status-report-full';
 }
 
 /**

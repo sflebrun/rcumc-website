@@ -18,11 +18,12 @@ $condition = get_field ('condition');
      $args          = array( 
                      'post_type' => 'event',
                      'posts_per_page' => 6,
-                     'event-category' => 'worship',
+                     'event-category' => 'worship',                 
                      'event_start_after' => 'now',
                      'orderby' =>  'eventstart',
                      'order' => $order,
-                     		
+                    
+                                        		
                       ); 
 
      

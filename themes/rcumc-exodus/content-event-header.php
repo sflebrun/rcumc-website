@@ -20,8 +20,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  		<?php if ( ctfw_has_title() ) : ?>
                     <h1 class="exodus-entry-title<?php if ( is_singular( get_post_type() ) ) : ?> exodus-main-title<?php endif; ?>">
 			<?php exodus_post_title(); 
-                        echo '<br/>'; 
-                        $date= eo_get_the_start('n/j/y  g:i a');
+                        echo '<br/>';
+                   if( eo_is_all_day() ){
+						              	$format = 'n/j/y';
+                           }
+                   else{
+					                	$format = 'n/j/y  g:i a'; 
+                        }
+                        $date= eo_get_the_start($format);
                         echo  $date;  ?>   
                                                                                                                   
                         <br/> 
@@ -39,6 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 				<ul class="exodus-entry-byline">
 					<?php echo $musicgroups ; ?>
 				</ul>
+
 			<?php endif; ?>			
 	              <?php if ( exodus_show_comments() ) : ?>
 				<ul class="exodus-entry-comments-link exodus-content-icon">

@@ -18,6 +18,7 @@ locate_template('index.php', true);
 
 function rcumc_status_report_loop_after_content()
 {
+        $GLOBALS[RCUMC_Status_Report::FULL_FLAG] = false;
 	if ( isset($_REQUEST['due-date'] ) )
 	{
 		$query = rcumc_status_report_by_week_content(
@@ -63,7 +64,8 @@ function rcumc_status_report_default_content()
 function rcumc_status_report_by_week_content( $due_date_text )
 {
 	$GLOBALS['rcumc-status-report-by-week-date'] = $due_date_text;
-
+        $GLOBALS[RCUMC_Status_Report::FULL_FLAG] = true;
+        
 	// Determine the range of that Due Date falls in
 	// Range Sunday to Saturday of date selected.
 	$date_selected = strtotime( $due_date_text );
@@ -205,4 +207,3 @@ function rcumc_status_report_query_orderby_last_and_first_name( $args )
 		return $query;
 
 	}   // end of rcumc_status_report_query_orderby_last_and_first_name()
-

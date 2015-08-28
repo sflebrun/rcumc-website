@@ -73,6 +73,7 @@ function rcumc_create_status_report_type()
         'menu_icon'             =>  'dashicons-book',
 		'show_in_menu'          =>  true,
 		'show_in_admin_bar'     =>  true,
+		'map_meta_cap'          =>  true,
 		'capability_type'       =>  RCUMC_Status_Report::TYPE_NAME,
 //		'capabilities'          =>  array(),
 ///		'query_var'             =>  true,

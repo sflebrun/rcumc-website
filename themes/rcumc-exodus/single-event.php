@@ -60,7 +60,10 @@ get_header(); ?>
 				<ul class="exodus-entry-byline">
 					<?php echo $musicgroups ; ?>
 				</ul>
-			<?php endif; ?>			
+			<?php endif; ?>
+ 
+          
+       
 	              <?php if ( exodus_show_comments() ) : ?>
 				<ul class="exodus-entry-comments-link exodus-content-icon">
 					<span class="<?php exodus_icon_class( 'comments-link' ); ?>"></span>

@@ -32,7 +32,7 @@ get_header();
     <?php endwhile; /* the Loop While */ ?>
 
     <?php } else { /* have_posts() */ ?>
-    <h2>No Status Reports found.</h>2
+    <h2>No Status Reports found.</h2>
 
 	<?php }  /* have_posts() */ ?>
 

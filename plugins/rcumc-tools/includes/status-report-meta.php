@@ -104,7 +104,8 @@ function rcumc_status_report_metabox_field( $post )
 	 </script>
 
 	 <h1><?php echo $title; ?></h1>
-	 <hr />
+	 <p>&nbsp;</p>
+	 <hr style="border-top: 5px solid purple;" />
 	 <label><strong>Due Date:&nbsp;</strong>
 	 <input type="text" id="due_date_field"
 			name="<?php echo RCUMC_Status_Report_Fields::DUE_DATE; ?>"
@@ -113,8 +114,8 @@ function rcumc_status_report_metabox_field( $post )
 		  </label>
 
 	 <p>
-	 <hr/>
-	 <label><strong>Did Last Week:</strong>
+	 <hr style="border-top: 5px solid purple;"/>
+	 <label><h2>Did Last Week:</h2>
      <?php
 	   wp_editor( $done_text,
 				  RCUMC_Status_Report_Fields::DONE_TEXT,
@@ -122,10 +123,12 @@ function rcumc_status_report_metabox_field( $post )
       ?>
 	</label>
      </p>
-		  <p>
-		  <hr/>
+				  	 <p>&nbsp;</p>
+				  	   <p>
+
+		  <hr style="border-top:5px solid purple;"/>
 	 
-		  <label><strong>Plans for next Week:</strong>
+		  <label><h2>Plans for next Week:</h2>
      <?php
 	   wp_editor( $todo_text,
 				  RCUMC_Status_Report_Fields::TODO_TEXT,
@@ -133,10 +136,12 @@ function rcumc_status_report_metabox_field( $post )
       ?>
 	</label>
      </p>
+     	 <p>&nbsp;</p>
 		  <p>
-<hr/>
+		  
+<hr style="border-top: 5px solid purple;"/>
 	 
-		  <label><strong>Collaberation Requests:</strong>
+		  <label><h2>Collaberation Requests:</h2>
      <?php
 	   wp_editor( $help_text,
 				  RCUMC_Status_Report_Fields::HELP_TEXT,
@@ -158,6 +163,18 @@ function rcumc_status_report_metabox_field( $post )
 </p>
 
 <?php
+
+    // BEGIN Debug
+//   $post_type = get_post_type_object( $post->post_type );
+//   echo "RCUMC Status Report Post Type Object:<br/>" . PHP_EOL;
+//   print_r($post_type);
+//   echo  "<br/>" . PHP_EOL;
+//
+//    $user = wp_get_current_user();
+//    echo "Current User Object:<br/>" . PHP_EOL;
+//    print_r($user);
+//    echo  "<br/>" . PHP_EOL;
+    // END Debug
 }   // end of rcumc_sr_metabox_field()
 
 /**
@@ -328,7 +345,7 @@ function  rcumc_status_report_meta_save( $post_id, $post, $update )
 	$post_type = get_post_type_object( $post->post_type );
 
 	// Verify that user has permission to edit the post.
-	if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
+	if ( !current_user_can( $post_type->cap->edit_posts ) )   //, $post_id ) )
 	{
 		return $post_id;
 	}
@@ -496,4 +513,3 @@ function rcumc_status_report_order_by_last_and_first_name( $orderby )
 	return $clause . 'lastvalue.meta_value, firstvalue.meta_value';
 
 }   // end of rcumc_status_report_order_by_last_and_first_name()
-
